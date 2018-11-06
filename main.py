@@ -4,9 +4,37 @@ import matplotlib.pyplot as plt
 
 NUM_PTS = 1000
 
-def generate_data(n):
+
+def generate_anomaly_unsmooth():
+
+    def generate_splash():
+        if np.random.randn() > 2.1:
+            x = np.random.uniform(-50, 50)
+        else:
+            x = 0
+        return x
+
+    a_date = np.linspace(0, NUM_PTS, NUM_PTS+1)
+    anomaly = []
+    for i in a_date:
+        anomaly.append((
+            i,
+            generate_splash(),
+            generate_splash(),
+            generate_splash(),
+            generate_splash(),
+            generate_splash(),
+            generate_splash(),
+            generate_splash(),
+            generate_splash()
+       ))
+    return anomaly
+
+
+def generate_data(n=NUM_PTS):
     a_date = np.linspace(0, n, n+1)
     a_gases = []
+    a_ano = generate_anomaly_unsmooth()
     for i in a_date:
         a_gases.append((
             i,
@@ -25,11 +53,11 @@ def generate_data(n):
             #generating O2
             50 + i / 100 + 10 * math.sin(i / 10) + 5 * math.sin(i / 4) + 2 * np.random.randn()
         ))
-    return np.array(a_gases)
+    return np.array(a_gases) + np.array(a_ano)
 
 
 def show_graph():
-    gases = generate_data(NUM_PTS)
+    gases = generate_data()
     fig, ((ax_h2, ax_co), (ax_co2, ax_ch4), (ax_c2h2, ax_c2h4), (ax_c2h6, ax_o2)) = plt.subplots(4, 2, sharex='all')
 
     ax_h2.set_ylim(0, 100)
@@ -82,3 +110,4 @@ def show_graph1():
 
 
 show_graph()
+#generate_data()
