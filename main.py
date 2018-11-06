@@ -16,8 +16,10 @@ def generate_data(n):
             20 + i / 30 + 3 * math.log(4 * i + 1) + 11 * math.sin(i / 40) + 8 * math.sin(i / 34)
                 + 2 * math.sin(i / 10) + 3 * math.sin(i / 5)
                 + np.random.randn(),
-            60 + i / 80 + 3 * math.sin(i / 15) + 5 * math.sin(i / 70) + np.random.randn(),
-            20 + i / 80 + 4 * math.sin(i / 50) + np.random.randn(),
+            #generating CH4
+			60 + i / 80 + 3 * math.sin(i / 15) + 5 * math.sin(i / 70) + np.random.randn(),
+            #generating C2H2
+			20 + i / 80 + 4 * math.sin(i / 50) + np.random.randn(),
             #generating C2H6
             20 + i / 20 + 5 * math.sin(i / 4) + 15 * math.sin(i / 35) + 12 * math.sin(i / 68) + 4 * np.random.randn(),
             #generating O2
